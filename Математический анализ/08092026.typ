@@ -149,5 +149,102 @@ $X quad Φ={φ_k}_(k=1)^infinity$ \
 $sum_(k = 1)^(infinity) c_k dot φ_k=s ⇒c_k=(s, φ_k)$
 
 #line(length:  100%)
+$ f ∈ X $
+Числа $c_k=c_k (f)-(f, c_k), k ∈ NN$, коэффициенты фурье функции f по системе Ф.
 
+Ряд $sum_(k = 1)^(infinity) c_k (f) dot φ_k$ ряд фурье функции f по Ф.
+
+==== Когда ряд сходится к f?
+
+$ Ф={φ_k}_1^infinity quad Ф'={φ_k}_2^infinity $ 
+$ sum_(k = 1)^(infinity) c_k dot φ_k quad sum_(k = 2)^(infinity) c_k dot φ_k $
+
+Получим критерий в общем случае
+
+Докажем, что условия из него выполняются для ТС в $tilde(L_2)$
+
+*Теорема.* Экстремальное свойство отрезка (частичной суммы) ряда Фурье.
+
+$ X, Φ⇒ ∀ f ∈ X quad |f-s_n (f)|=inf_( p_n {j_1, ... , j_n}) |f-p_n| $
+$p_n=sum_(k = 1)^(n) j_k dot φ_k quad s_n (f) = sum_(k = 1)^(n) c_k (f) dot φ_k $
+
+При этом $|f-s_n (f)|^2 +|s_n (f)|^2=|f|^2$ и $(f-s_n (f)) bot s_n (f)$
+
+Частный случай: $X=RR^3$ \
+$f=(c_1, c_2, c_3)=sum_(k = 1)^(3) c_k dot φ_k$
+
+$n=1 quad |f-p_1|=|f-j_1 dot φ_1|$\
+$n=2 quad |f-p_2|=|f-(j_1 dot φ_1 + j_2 dot φ_2)| →_"min" j_1 j_2 $
+
+#figure(
+  image("/assets/image-1.png", width: 40%, fit: "contain")
+)
+
+*Доказательство:*  
+
+$(f,p_n)=(f, sum_(k = 1)^(n) j_k dot φ_k)=sum_(k = 1)^(n) j_k dot (f, φ_k)=sum_(k = 1)^(n) j_k dot c_k (f) $
+
+$ |f-p_n|^2=(f-p_n, f-p_n)=|f|^2-2 dot sum_(k = 1)^(n) j_k dot c_k (f) + |p_n|^2= $ 
+$=|f|^2- 2 dot sum_(k = 1)^(n) j_k dot c_k (f)+sum_(k = 1)^(n) j_k^2+sum_(k = 1)^(n) c_k^2 (f)-sum_(k = 1)^(n) c_k^2 (f)=$ 
+$ =sum_(k = 1)^(n) (c_k (f)-j_k)^2+|f|^2-sum_(k = 1)^(n) c_k^2 (f) - "(*)" $
+$sum_(k = 1)^(n) (c_k (f)-j_k)^2=0 ⇔ j_k=c_k (f) $
+
+Подставим в (\*) $p_n=sum_(k = 1)^(n) c_k (f) dot φ_k=s_n (f)$
+
+$ |f-p_n^\*|^2=|f-s_n (f)|^2=|f|^2-|s_n (f)|^2 $
+
+*Теорема.* Критерии сходимости ряда Фурье.
+
+$X, Φ ⇒ ∀ f ∈ X$
+
+Следующие свойства равносильны:
++ $∃ ! {c_k}_1^infinity quad f=sum_(k = 1)^(infinity) c_k dot φ_k$ - Ф - базис Шаудера в пространстве Х
++ $∀ ε>0 quad ∃p_n quad |f-p_n|<ε $ Ф полна в X
++ $|f|^2=sum_(k = 1)^(infinity) (c_k (f))^2$ - равенство Парсеваля (Ф замкнута)
+
+*Доказательство.*
+
+$(1) ⇒ (2) quad f=sum_(k = 1)^(infinity) c_k dot φ_k "в силу (1)" ⇒ c_k = c_k (f)$\
+$|f-s_n (f)|→_(n→0)0 ⇒∀ε  quad ∃p_n^\*=s_n (f) quad |f-p_n|<ε$
+
+$(2) ⇒ (1) quad ∀ ε>0 quad ∃p_n quad |f-p_n|<ε ⇒ ∀m>n $ \ $|f-s_m (f)| ≤|f-p_n|< ε$
+
+$(1)=(2) ⇒ (3) quad |f-s_n (f)|^2 +|s_n (f)|^2 =|f|^2 (\*\*)$ \
+$s_n (f) = sum_(k = 1)^(n) c_k^2 (f)$\
+
+в (\*\*) $n→ infinity ⇒^((1)) |f-s_n (f)|→0 ⇒ |s_n (f)|^2 → |f|^2 ⇒ $ \
+$⇒ sum_(k = 1)^(n) c_k^2 (f)→|f|^2$
+
+$(3)⇒(1) "в (**)" n→ infinity$\
+$ |s_n (f)|^2 + |f-s_n (f)|^2 =|f|^2 quad |s_n (f)|^2 → |f|^2 ⇒$\
+$ ⇒ |f-s_n (f)|^2  → 0$
+\ \ \ 
+==== Ряды Фурье по ТС
+Цель - ТС полна в $tilde(L_2)$
+
+$square → (Y, C_b, C_n)$ - что-то на лекции было про jpeg\
+$ tilde(L_2) - 1/pi integral_(-pi)^(pi) f^2 dif x < infinity $ 
+$ tilde(L_1) - 1/pi integral_(-pi)^(pi) f^2 dif x < infinity $
+
+$f ∈ tilde(L_2) ⇒ f ∈ tilde(L_1)$ \
+$(|f|,1)=1/pi integral_(-pi)^(pi) |f| dif x ≤(integral_(-pi)^(pi) |f|^2 dif x)^(1/2)_(<infinity) dot (integral_(-pi)^(pi) 1 dif x)^(1/2)_(<infinity)⇒$\
+$integral |f| <infinity$
+
+Далее $tilde(Φ)={1, cos x, sin x, cos 2 x, ...}$
+#line(length:  100%)
+
+$a_k dot cos k x +b_k dot sin k x = A_k dot cos (k x + Θ_k)$ - гармоника
+
+$A_k≥0 - "амплитуда" quad Θ_k -"начальная фаза"$
+
+$p_n=a_0/2+sum_(k = 1)^(n) (a_k dot cos k x +b_k dot sin k x) quad (2 n + 1)$ - коэффициент \ \
+$a_0/2+sum_(k = 1)^(n) (a_k dot cos k x +b_k dot sin k x)$ - тригонометрический ряд
+#line(length:  100%)
+
+*Теорема.* \
+Если тригонометрический ряд сходится к $f$ в $L_1$ (или $L_2$), то его коэффициенты выражаются через сумму ряда по методу Эйлера-Фурье.
+
+$a_k=1/pi integral_(-pi)^(pi) f(x) cos k x dif x quad k=0,1,...$\
+
+$b_k=1/pi integral_(-pi)^(pi) f(x) sin k x dif x quad k=1,2,...$
 
